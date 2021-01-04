@@ -33,6 +33,7 @@ public class UserController {
 
         String baseUrl = "http://service-provider/user/" + id;
         User user = this.restTemplate.getForObject(baseUrl, User.class);
+        User user = this.restTemplate.getForObject(baseUrl, User.class);
         System.out.println(user);
         return user;
     }
