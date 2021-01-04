@@ -1,0 +1,19 @@
+server:
+  port: 6060
+
+spring:
+  application:
+    name: service-consumer
+
+# 配置eureka 服务提供者
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:7070/eureka,http://${eureka.instance.hostname}:7071/eureka
+
+service-provider:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+

@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: service-provider
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///mybatis?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+
+# 配置Mybatis
+mybatis:
+  type-aliases-package: com.eureka.service.serviceprovider.domain
+
+---
+server:
+  port: 9090
+spring:
+  profiles: provider1
+# 配置eureka 服务提供者
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:7070/eureka,http://${eureka.instance.hostname}:7071/eureka
+
+---
+server:
+  port: 9091
+spring:
+  profiles: provider2
+# 配置eureka 服务提供者
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:7070/eureka,http://${eureka.instance.hostname}:7071/eureka
