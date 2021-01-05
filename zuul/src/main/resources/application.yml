@@ -4,9 +4,25 @@ spring:
   application:
     name: api-gateway # 指定服务名称
 
+# 配置eureka
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5 # 获取服务列表的周期
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:7070/eureka/,http://${eureka.instance.hostname}:7071/eureka/
+  instance:
+    lease-expiration-duration-in-seconds: 90 # 服务失效时间
+    lease-renewal-interval-in-seconds: 30 # 服务续约时间间隔
+    hostname: localhost
 # 配置Zuul路由规则
+#zuul:
+#  routes:
+#    service-provider: # 路由id
+#      path: /service-provider/** # 映射路径
+#      serviceId: service-provider
+    # url: http://localhost:9090
 zuul:
   routes:
-    service-provider: # 路由id
-      path: /service-provider/** # 映射路径
-      url: http://localhost:9090
+    service-provider: /service-provider/** # 映射路径
+    service-consumer: /service-consumer/**
+  prefix: /api # 添加路由前缀

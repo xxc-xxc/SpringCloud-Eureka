@@ -23,7 +23,7 @@ eureka:
     hostname: localhost
   client:
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:7070/eureka,http://${eureka.instance.hostname}:7071/eureka
+      defaultZone: http://${eureka.instance.hostname}:7070/eureka/,http://${eureka.instance.hostname}:7071/eureka/
 
 ---
 server:

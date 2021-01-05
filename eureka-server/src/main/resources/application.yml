@@ -12,15 +12,18 @@ spring:
 eureka:
   instance:
     hostname: localhost
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
   client:
     service-url: # Eureka服务的地址
-      defaultZone: http://${eureka.instance.hostname}:7071/eureka
+      defaultZone: http://${eureka.instance.hostname}:7071/eureka/
     # 是否启用同步注册服务的信息。默认为true。
     # 在EurekaServer集群中，需要同步其他的EurekaServer节点的数据
     fetch-registry: true
     # 表示是否向Eureka注册服务。默认为true。
     # 由于现在自己本身就是Eureka服务，所以可以设置为false。
     register-with-eureka: true
+    # registry-fetch-interval-seconds: 30
   server:
     # 当一个服务未按时进行心跳续约时，Eureka会统计最近15分钟心跳失败的服务实例的比例是否超过85%。
     # Eureka会把当前可能宕机实例的注册信息保存起来，不予剔除。
@@ -41,7 +44,7 @@ eureka:
     hostname: localhost
   client:
     service-url: # Eureka服务的地址
-      defaultZone: http://${eureka.instance.hostname}:7070/eureka
+      defaultZone: http://${eureka.instance.hostname}:7070/eureka/
     # 是否启用同步注册服务的信息。默认为true。
     # 在EurekaServer集群中，需要同步其他的EurekaServer节点的数据
     fetch-registry: true
