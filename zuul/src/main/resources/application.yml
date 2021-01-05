@@ -1,0 +1,12 @@
+server:
+  port: 5050
+spring:
+  application:
+    name: api-gateway # 指定服务名称
+
+# 配置Zuul路由规则
+zuul:
+  routes:
+    service-provider: # 路由id
+      path: /service-provider/** # 映射路径
+      url: http://localhost:9090
