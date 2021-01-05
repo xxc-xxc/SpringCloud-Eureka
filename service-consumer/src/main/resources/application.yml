@@ -26,3 +26,7 @@ hystrix:
           thread:
             timeoutInMilliseconds: 6000 # 设置hystrix的超时时间为6000ms
 
+circuitBreaker:
+  requestVolumeThreshold: 5
+  sleepWindowInMilliseconds: 10000
+  errorThresholdPercentage: 50

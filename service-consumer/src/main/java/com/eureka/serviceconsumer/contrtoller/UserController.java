@@ -35,6 +35,11 @@ public class UserController {
 //        ServiceInstance instance = instanceList.get(0);
 //        String baseUrl = "http://" + instance.getHost() + ":" + instance.getPort() + "/user/" + id;
 
+        // 模拟请求失败
+        if (id == 1) {
+            throw new RuntimeException("服务正忙");
+        }
+
         String baseUrl = "http://service-provider/user/" + id;
         String userStr = this.restTemplate.getForObject(baseUrl, String.class);
 //        User user = this.restTemplate.getForObject(baseUrl, User.class);
