@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql:///mybatis?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
-    password:
+    password: root
 
 # 配置Mybatis
 mybatis:

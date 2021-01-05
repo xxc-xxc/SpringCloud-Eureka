@@ -13,7 +13,6 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("{id}")
-    @ResponseBody
     public User findById(@PathVariable("id") Integer id) {
 //        try {
 //            Thread.sleep(7000);

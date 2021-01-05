@@ -6,12 +6,14 @@ import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 //@EnableCircuitBreaker // 开启Hystrix服务熔断
 //@EnableDiscoveryClient
 //@SpringBootApplication
+@EnableFeignClients // 开启feign客户端
 @SpringCloudApplication
 public class ServiceConsumerApplication {
 
@@ -23,10 +25,10 @@ public class ServiceConsumerApplication {
      * 开启客户端负载均衡
      * @return
      */
-    @LoadBalanced
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+//    @LoadBalanced
+//    @Bean
+//    public RestTemplate restTemplate() {
+//        return new RestTemplate();
+//    }
 
 }
