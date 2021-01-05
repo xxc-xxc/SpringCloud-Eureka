@@ -14,6 +14,16 @@ eureka:
     lease-expiration-duration-in-seconds: 90 # 服务失效时间
     lease-renewal-interval-in-seconds: 30 # 服务续约时间间隔
     hostname: localhost
+
+# 配置熔断规则
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000 # 设置hystrix的超时时间为6000ms
+
 # 配置Zuul路由规则
 #zuul:
 #  routes:
