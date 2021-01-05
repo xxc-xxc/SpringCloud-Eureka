@@ -6,10 +6,8 @@ import com.eureka.serviceconsumer.domain.User;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 //@DefaultProperties(defaultFallback = "fallBackMethod") // 类级别的熔断方法
@@ -34,15 +32,15 @@ public class UserController {
      */
 //    @HystrixCommand(fallbackMethod = "queryUserByIdFallBack")
 //    @HystrixCommand
-    @GetMapping
-    public String queryUserById(@RequestParam("id") Integer id){
+    @GetMapping("{id}")
+    public User queryUserById(@PathVariable("id") Integer id){
         // 获取服务实例集合
 //        List<ServiceInstance> instanceList = discoveryClient.getInstances("service-provider");
 //        ServiceInstance instance = instanceList.get(0);
 //        String baseUrl = "http://" + instance.getHost() + ":" + instance.getPort() + "/user/" + id;
 
         // 模拟请求失败
-//        if (id == 41) {
+//        if (id == 1) {
 //            throw new RuntimeException("服务正忙");
 //        }
 
@@ -50,8 +48,8 @@ public class UserController {
 //        String userStr = this.restTemplate.getForObject(baseUrl, String.class);
 //        User user = this.restTemplate.getForObject(baseUrl, User.class);
 //        System.out.println(userStr);
-        User user = userClient.findById(id);
-        return JSON.toJSONString(user);
+//        User user = userClient.findById(id);
+        return userClient.findById(id);
     }
 
 //    /**

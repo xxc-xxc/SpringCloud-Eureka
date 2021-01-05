@@ -19,6 +19,9 @@ public class UserController {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
+//        if (id == 1) {
+//            throw new RuntimeException("服务正忙");
+//        }
         User user = userService.findById(id);
         return user;
     }

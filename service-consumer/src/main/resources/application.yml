@@ -30,3 +30,8 @@ circuitBreaker:
   requestVolumeThreshold: 5
   sleepWindowInMilliseconds: 10000
   errorThresholdPercentage: 50
+
+# 开启feign熔断功能
+feign:
+  hystrix:
+    enabled: true
